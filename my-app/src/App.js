@@ -9,7 +9,7 @@ class App extends Component {
 		super(props);
 	}
 
-	// task: object {id: number, task: string, completed: boolean}
+	// task: object {id: number, text: string, completed: boolean}
 	createTaskList = (task) => {
 		const todoStyle = {
 			display: "inline-block",
