@@ -1,44 +1,6 @@
 import React, {Component} from "react";
+import TaskForm from "./components/TaskForm.js";
 import "./App.css";
-
-class TaskForm extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			task: ""
-		};
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-	}
-	
-	handleSubmit(e) {
-		e.preventDefault();
-		if (this.state.task.length) {
-			this.props.addTask(this.state.task);
-			this.setState({task: ""});
-		} else {
-			alert("Please, add a task.");
-		}
-	}
-
-	handleChange(e) {
-		this.setState({
-			task: e.target.value
-		});
-	}
-
-	render () {
-		return (
-			<form>
-				<input 
-					value={this.state.task} 
-					onChange={this.handleChange}
-				/>
-				<button onClick={this.handleSubmit}>Add</button>
-			</form>
-		);
-	}
-}
 
 class App extends Component {
 	constructor() {
@@ -57,13 +19,9 @@ class App extends Component {
 				}
 			],
 		};
-		this.createTaskList = this.createTaskList.bind(this);
-		this.addTaskToDatabase = this.addTaskToDatabase.bind(this);
-		this.deleteTaskFromDatabase = this.deleteTaskFromDatabase.bind(this);
-		this.toggleTask = this.toggleTask.bind(this);
 	}
 
-	toggleTask(chosenId) {
+	toggleTask = (chosenId) => {
 		this.setState({
 			tasks: this.state.tasks.map(function(item) {
 				if (item.id === chosenId) {
@@ -78,7 +36,7 @@ class App extends Component {
 	}
 
 	//task: string
-	addTaskToDatabase(task) {
+	addTaskToDatabase = (task) => {
 		this.setState({ 
 			tasks: [
 				...this.state.tasks, 
@@ -92,7 +50,7 @@ class App extends Component {
 	}
 
 	// id: number
-	deleteTaskFromDatabase(id) {
+	deleteTaskFromDatabase = (id) => {
 		const tasks = [...this.state.tasks];
 		const index = tasks.map(item => item.id).indexOf(id);
 		tasks.splice(index, 1);
@@ -100,7 +58,7 @@ class App extends Component {
 	}
 
 	// task: object {id: number, task: string, completed: boolean}
-	createTaskList(task) {
+	createTaskList = (task) => {
 		const todoStyle = {
 			display: "inline-block",
 			textDecoration: task.completed
