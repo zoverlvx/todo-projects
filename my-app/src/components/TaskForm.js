@@ -32,7 +32,6 @@ class TaskForm extends Component {
 	}
 
 	render () {
-		console.log("props in form: ", this.props);
 		return (
 			<form>
 				<input 
