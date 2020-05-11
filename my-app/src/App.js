@@ -4,8 +4,6 @@ import {toggleTask, deleteFromDatabase} from "./actions";
 import TaskForm from "./components/TaskForm.js";
 import "./App.css";
 
-
-
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -40,7 +38,6 @@ class App extends Component {
 	}
 
 	render() {
-		console.log("props in App: ", this.props);
 		return (
 			<>
 				{this.props.tasks.map(this.createTaskList)}
